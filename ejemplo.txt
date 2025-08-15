@@ -1,0 +1,5 @@
+Python es un lenguaje de programación interpretado, de alto nivel y propósito general.
+Python fue creado por Guido van Rossum y fue lanzado por primera vez en 1991.
+Python es conocido por su sintaxis simple y legible, lo que lo hace ideal para principiantes.
+Python se utiliza en desarrollo web, análisis de datos, inteligencia artificial y más.
+Python tiene una gran comunidad y muchas bibliotecas disponibles.

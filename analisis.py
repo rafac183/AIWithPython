@@ -1,8 +1,18 @@
+"""
+Módulo de análisis de datos que lee un archivo CSV y genera estadísticas descriptivas
+junto con una gráfica de dispersión.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
 def main():
+    """
+    Función principal que ejecuta el análisis completo de datos.
+    
+    Lee un archivo CSV, calcula estadísticas descriptivas y genera una gráfica de dispersión.
+    """
     # Leer el archivo CSV
     # Nota: el separador es punto y coma (;) en lugar de coma
     try:
@@ -13,8 +23,14 @@ def main():
     except FileNotFoundError:
         print("Error: No se encontró el archivo 'table.csv'")
         return
-    except Exception as e:
-        print(f"Error al leer el archivo: {e}")
+    except pd.errors.EmptyDataError:
+        print("Error: El archivo CSV está vacío")
+        return
+    except pd.errors.ParserError as e:
+        print(f"Error al parsear el archivo CSV: {e}")
+        return
+    except UnicodeDecodeError as e:
+        print(f"Error de codificación del archivo: {e}")
         return
 
     # Calcular estadísticas descriptivas

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Lista de Tareas</h1>
+        
+        <div class="form-container">
+            <form method="POST" action="/agregar">
+                <input type="text" name="texto_tarea" placeholder="Escribe una nueva tarea..." required>
+                <button type="submit">Agregar Tarea</button>
+            </form>
+        </div>
+
+        <div class="tareas-lista">
+            {% if tareas %}
+                {% for tarea in tareas %}
+                    <div class="tarea {% if tarea.hecho %}hecho{% endif %}">
+                        <span class="tarea-texto">{{ tarea.texto }}</span>
+                        {% if not tarea.hecho %}
+                            <a href="/completar/{{ tarea.id }}">
+                                <button class="btn-completar">✓ Completar</button>
+                            </a>
+                        {% else %}
+                            <button class="btn-completar" disabled>✓ Completada</button>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="sin-tareas">
+                    <p>No hay tareas pendientes. ¡Agrega una nueva tarea!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import unittest
-from operaciones import sumar
+from calculadora.operaciones import sumar
 
 class TestOperaciones(unittest.TestCase):
     def test_suma_numeros_enteros(self):
